@@ -1,0 +1,10 @@
+Algo:
+To enter Critical section:
+  -> When a site Si wants to enter the critical section, it send a timestamped REQUEST message to all other sites.
+  -> When a site Sj receives a REQUEST message from site Si, It sends a REPLY message to site Si if and only if
+      -> Site Sj is neither requesting nor currently executing the critical section.
+      -> In case Site Sj is requesting, the timestamp of Site Si‘s request is smaller than its own request.
+To execute the critical section:
+  -> Site Si enters the critical section if it has received the REPLY message from all other sites.
+To release the critical section:
+  -> Upon exiting site Si sends REPLY message to all the deferred requests.
